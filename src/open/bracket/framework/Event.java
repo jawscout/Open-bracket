@@ -3,8 +3,8 @@ package open.bracket.framework;
 public abstract class Event {
 
 	private EventState State = EventState.DEFAULT;
-	private long StartTime = 0;
-	private long CompleteTime = 0;
+	private long StartTime = 0L;
+	private long CompleteTime = 0L;
 
 	public EventState getState() {
 		return State;
