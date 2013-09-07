@@ -1,10 +1,13 @@
 package open.bracket.framework;
 
 import open.bracket.framework.game.GameConfig;
+import open.bracket.framework.game.player.Player;
+import open.bracket.framework.test.StandardPlayer;
 import open.bracket.framework.test.TestConfig;
 
 public final class FW {
-	private GameConfig config;
+	
+	private static GameConfig config;
 
 	protected FW() {
 
@@ -17,9 +20,20 @@ public final class FW {
 	}
 
 	public void start() {
-		checkConfig();
+		if (!checkConfig())
+			return;
+		// Test data
+		StandardPlayer players[] = new StandardPlayer[8];
+		for (int i = 0; i < players.length; i++) {
+			players[i] = new StandardPlayer();
+			players[i].setName("Player " + (i+1));
+		}
+		//
+		makeMatches(players);
+		
 	}
 
+	
 	public boolean checkConfig() {
 
 		/*
@@ -29,6 +43,10 @@ public final class FW {
 
 			return true;
 		return false;
+	}
+
+	public void makeMatches(Player<?> players[]) {
+		config.makeMatches(players);
 	}
 
 	/**
@@ -41,5 +59,8 @@ public final class FW {
 		instance.start();
 		// For now I will use the test classes
 
+	}
+	private static class PresistantAgent extends Thread{
+		
 	}
 }

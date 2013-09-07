@@ -40,4 +40,13 @@ public class Player<T extends Player<?>> {
 	public void setState(PlayerState state) {
 		State = state;
 	}
+	
+	public String toString(){
+		return Name;
+		
+	}
+	
+	public String toScoreBoardDisplay(){
+		return toString();
+	}
 }

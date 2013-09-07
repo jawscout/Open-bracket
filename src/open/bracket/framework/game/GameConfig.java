@@ -21,5 +21,7 @@ public interface GameConfig {
 
 	@SuppressWarnings("rawtypes")
 	public Class<? extends Player> getPlayerType();
+	
+	public void makeMatches(Player<?> players[]);
 
 }

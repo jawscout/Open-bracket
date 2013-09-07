@@ -54,4 +54,11 @@ public class TestConfig implements GameConfig{
 		return false;
 	}
 
+	@Override
+	public void makeMatches(Player<?>[] players) {
+		// TODO Auto-generated method stub
+		for(Player<?> p : players)
+		System.out.println(p);
+	}
+
 }
