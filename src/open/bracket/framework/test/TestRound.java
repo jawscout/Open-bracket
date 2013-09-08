@@ -2,6 +2,7 @@ package open.bracket.framework.test;
 
 import java.util.UUID;
 
+import open.bracket.framework.FW;
 import open.bracket.framework.game.Game;
 import open.bracket.framework.game.Round;
 import open.bracket.framework.game.player.Player;
@@ -17,7 +18,8 @@ public class TestRound implements Round{
 
 	@Override
 	public void generateRound(Player<?>[] players) {
-		
+		Game[] tmpgames = new Game[players.length/FW.getConfig().getNumberOfPlayersPerMatch()];
+		System.out.println(players.length);
 	}
 
 	@Override
@@ -45,6 +47,17 @@ public class TestRound implements Round{
 	@Override
 	public int getNumberOfGames() {
 		return numberOfGames;
+	}
+	public String toString(){
+		String out = new String();
+		if(games != null)
+		{
+			for(int i = 0; i < games.length; i++)
+			{
+				out += "| " + games[i].toString();
+			}
+		}
+		return out;
 	}
 
 

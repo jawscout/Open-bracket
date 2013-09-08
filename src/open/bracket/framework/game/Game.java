@@ -16,5 +16,17 @@ public interface Game {
 	public Player<?>[] getPlayers();
 
 	public int getGameSize();
+	
+	public void makeGame(Player<?>[] players);
+	
+	public GameEventType getGameState();
+	
+	public void setGameState(GameEventType state);
+	
+	public Player<?>[] getWinner();
+	
+	public Player<?>[] getLooser();
+	
+	public void setWinner(Player<?>[] winner);
 
 }

@@ -28,24 +28,38 @@ public class Bracket {
 			return;
 		}
 		rounds = new Round[(int) rnds];
-		Player<?>[] tmpplar;
-		for (int i = 0; i < rounds.length; i++) {
-			tmpplar = new Player<?>[FW.getConfig().getNumberOfPlayersPerMatch()];
-			for (int x = 0; x < tmpplar.length; x++) {
-				tmpplar[x] = players[((i+1)*(x+1))-1];
-				System.out.println(tmpplar[x]);
-				
-			}
+		Player<?>[] tmpplar = null;
+		System.out.println("Players: " + players.length);
+		int length = players.length;
+		for (int b = 0; b < rounds.length; b++) {
 			try {
-				rounds[i] = FW.getConfig().getRoundType().newInstance();
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
+				rounds[b] = FW.getConfig().getRoundType().newInstance();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			rounds[i].generateRound(tmpplar);
+			if (b == 0)// first round
+			{
+				/*for (int i = 0; i < players.length
+						/ FW.getConfig().getNumberOfPlayersPerMatch(); i++) {
+					tmpplar = new Player<?>[FW.getConfig()
+							.getNumberOfPlayersPerMatch()];
+					for (int x = 0; x < tmpplar.length; x++) {
+						tmpplar[x] = players[(((i + 1) * FW.getConfig()
+								.getNumberOfPlayersPerMatch()) - x) - 1];
+					}
+				}*/
+				rounds[b].generateRound(players);
+			}
+			else
+			{// Fill in null players for all other spaces
+				length = length/(FW.getConfig().getNumberOfPlayersPerMatch()/FW.getConfig().getNumberOfWinnersPerMatch());
+				tmpplar = new Player<?>[length];
+				for(int i = 0; i < tmpplar.length; i++)
+				{
+					tmpplar[i] = new Player<>(true);
+				}
+				rounds[b].generateRound(tmpplar);
+			}
 		}
 	}
 

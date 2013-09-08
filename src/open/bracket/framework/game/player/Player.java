@@ -22,6 +22,7 @@ public class Player<T extends Player<?>> {
 	}
 	public Player(boolean isnull){
 		isNull = isnull;
+		Name = "TBA";
 	}
 	public void setName(String name) {
 		Name = name;
