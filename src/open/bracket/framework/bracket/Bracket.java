@@ -17,6 +17,7 @@ public class Bracket {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void buildBracket(Player<?>[] players) {
 		for (Player<?> p : players)
 			System.out.println(p);
@@ -56,7 +57,7 @@ public class Bracket {
 				tmpplar = new Player<?>[length];
 				for(int i = 0; i < tmpplar.length; i++)
 				{
-					tmpplar[i] = new Player<>(true);
+					tmpplar[i] = new Player(true);
 				}
 				rounds[b].generateRound(tmpplar);
 			}
