@@ -15,8 +15,6 @@ public interface GameConfig {
 
 	public boolean loadGame();
 
-	public Class<? extends Match> getMatchType();
-
 	public Class<? extends Round> getRoundType();
 
 	@SuppressWarnings("rawtypes")

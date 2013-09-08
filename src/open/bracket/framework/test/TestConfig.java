@@ -1,7 +1,6 @@
 package open.bracket.framework.test;
 
 import open.bracket.framework.game.GameConfig;
-import open.bracket.framework.game.Match;
 import open.bracket.framework.game.Round;
 import open.bracket.framework.game.player.Player;
 
@@ -27,10 +26,6 @@ public class TestConfig implements GameConfig{
 		return 1;
 	}
 	
-	@Override
-	public Class<? extends Match> getMatchType() {
-		return TestMatch.class;
-	}
 
 	@Override
 	public Class<? extends Round> getRoundType() {
