@@ -8,6 +8,7 @@ import open.bracket.framework.game.player.Player;
 public class StandardGame implements Game {
 	private boolean ready = false;
 	private Player<?>[] players = null;
+
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
@@ -16,38 +17,55 @@ public class StandardGame implements Game {
 
 	@Override
 	public boolean isReady() {
-		// TODO Auto-generated method stub
 		return ready;
 	}
 
 	@Override
 	public Player<?>[] getPlayers() {
-		// TODO Auto-generated method stub
-		return null;
+		return players;
 	}
 
 	@Override
 	public int getGameSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return players.length;
 	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return super.toString();
+		String output = new String();
+		output += "|Game: ";
+		if (players == null) {
+			output += "null|";
+			return output;
+		}
+		if (players.length != 0) {
+			output += players[0].getName();
+			if (players.length < 1)
+				for (int i = 1; i < players.length; i++) {
+					output += " vs " + players[i].getName();
+				}
+		}
+		else
+		{
+			output += "no players";
+		}
+		return output;
 	}
 
 	@Override
 	public void makeGame(Player<?>[] players) {
-		if(FW.getConfig().getNumberOfPlayersPerMatch() != players.length)
-		{
-			System.err.println("Player number not matching config");
+		if (FW.getConfig().getNumberOfPlayersPerMatch() != players.length) {
+			System.err.println("Player number not matching config" + players.length);
+			
 			return;
 		}
 		this.players = players;
-		
+
 	}
+
 	GameEventType State = GameEventType.PreGame;
+
 	@Override
 	public GameEventType getGameState() {
 		return State;
@@ -57,13 +75,17 @@ public class StandardGame implements Game {
 	public void setGameState(GameEventType state) {
 		State = state;
 	}
+
 	Player<?>[] Winner = null;
+
 	@Override
 	public Player<?>[] getWinner() {
 		// TODO Auto-generated method stub
 		return Winner;
 	}
+
 	Player<?>[] Looser = null;
+
 	@Override
 	public Player<?>[] getLooser() {
 		// TODO Auto-generated method stub
@@ -74,12 +96,9 @@ public class StandardGame implements Game {
 	public void setWinner(Player<?>[] winner) {
 		Player<?>[] tmpLooser = new Player<?>[players.length - winner.length];
 		int l = 0;
-		for(int i = 0; i < players.length; i++)
-		{
-			for(int w = 0; w < winner.length; i++)
-			{
-				if(players[i] != winner[w])
-				{
+		for (int i = 0; i < players.length; i++) {
+			for (int w = 0; w < winner.length; i++) {
+				if (players[i] != winner[w]) {
 					tmpLooser[l++] = players[i];
 				}
 			}

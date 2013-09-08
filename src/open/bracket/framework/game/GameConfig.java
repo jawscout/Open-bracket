@@ -20,6 +20,8 @@ public interface GameConfig {
 	@SuppressWarnings("rawtypes")
 	public Class<? extends Player> getPlayerType();
 	
+	public Class<? extends Game> getGameType();
+	
 	public void makeMatches(Player<?> players[]);
 
 }

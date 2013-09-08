@@ -1,5 +1,6 @@
 package open.bracket.framework.test;
 
+import open.bracket.framework.game.Game;
 import open.bracket.framework.game.GameConfig;
 import open.bracket.framework.game.Round;
 import open.bracket.framework.game.player.Player;
@@ -54,6 +55,11 @@ public class TestConfig implements GameConfig{
 		// TODO Auto-generated method stub
 		for(Player<?> p : players)
 		System.out.println(p);
+	}
+
+	@Override
+	public Class<? extends Game> getGameType() {
+		return StandardGame.class;
 	}
 
 }
