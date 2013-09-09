@@ -40,15 +40,6 @@ public class Bracket {
 			}
 			if (b == 0)// first round
 			{
-				/*for (int i = 0; i < players.length
-						/ FW.getConfig().getNumberOfPlayersPerMatch(); i++) {
-					tmpplar = new Player<?>[FW.getConfig()
-							.getNumberOfPlayersPerMatch()];
-					for (int x = 0; x < tmpplar.length; x++) {
-						tmpplar[x] = players[(((i + 1) * FW.getConfig()
-								.getNumberOfPlayersPerMatch()) - x) - 1];
-					}
-				}*/
 				rounds[b].generateRound(players);
 			}
 			else

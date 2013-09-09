@@ -34,10 +34,12 @@ public class TestRound implements Round {
 					tmp--;
 				}
 				tmpgames[i].makeGame(tmpplar);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		games = tmpgames;
 	}
 
 	@Override
