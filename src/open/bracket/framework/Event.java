@@ -1,3 +1,4 @@
+
 package open.bracket.framework;
 
 public abstract class Event {
